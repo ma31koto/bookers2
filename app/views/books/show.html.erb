@@ -1,0 +1,79 @@
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+
+      <%= render 'users/list', user: @user %>
+
+      <h1>New book</h1>
+      <%= form_with model:@book_new, method: :post, local:true do |f| %>
+        <p>Title</p>
+          <%= f.text_field :title %>
+        <p>Opinion</p>
+         <%= f.text_area :body %>
+
+        <%= f.submit 'Create Book' %>
+      <% end %>
+
+    </div>
+
+    <div class="col-md-8 d-inline-block offset-md-1">
+
+      <h1>Book detail</h1>
+        <% if @user == current_user %>
+          <table class="table">
+            <tr>
+              <td>
+                <%= link_to(user_path(@book.user)) do %>
+                  <%= image_tag @book.user.get_profile_image(40,40) %><br>
+                  <%= @book.user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to(book_path(@book)) do %>
+                  <%= @book.title %>
+                <% end %>
+              </td>
+              <td>
+                <%= @book.body %>
+              </td>
+              <td>
+                <div class="btn-block btn btn-success">
+                  <%= link_to "Edit", edit_book_path(@book) %>
+                </div>
+              </td>
+              <td>
+                <div class="btn-block btn btn-danger">
+                  <%= link_to "Destroy", book_path(@book), method: :delete %>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+        <% else %>
+
+          <table class="table">
+            <tr>
+              <td>
+                <%= link_to(user_path(@book.user)) do %>
+                <%= image_tag @book.user.get_profile_image(40,40) %><br>
+                  <%= @book.user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to(book_path(@book)) do %>
+                  <%= @book.title %>
+                <% end %>
+              </td>
+              <td>
+                <%= @book.body %>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+
+    </div>
+  </div>
+</div>
