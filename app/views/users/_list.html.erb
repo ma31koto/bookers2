@@ -6,8 +6,12 @@
     <tr><th>name</th><td><%= user.name %></td></tr>
     <tr><th>introduction</th><td><%= user.introduction %></td></tr>
   </table>
+  
+  <% if !(user.name == "guestuser") %>
   <div class="btn btn-secondary btn-block sign_in">
     <%= link_to(edit_user_path(user)) do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
   </div>
+  <% end %>
+

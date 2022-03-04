@@ -8,9 +8,10 @@
 
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row text-center">
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
           <a class="btn-block btn btn-info sign_in" href="/users/sign_in">Log in</a>
           <a class="btn-block btn btn-success sign_up" href="/users/sign_up">Sign up</a>
-        </div> 
+        </div>
       </div>
     </div>
   </div>
